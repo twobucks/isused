@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+const program = require('commander')
+
+const main = require('../')
+const pckgjson = require('../package.json')
+
+function run() {
+  program
+    .version(pckgjson.version)
+    .usage('<file.json> <./folder>')
+    .parse(process.argv)
+
+  if (program.args.length < 2) {
+    program.outputHelp()
+    return
+  }
+
+  const json = program.args[0]
+  const folder = program.args[1]
+
+  main.search(json, folder)
+}
+run()

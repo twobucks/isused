@@ -1,0 +1,28 @@
+{
+  "name": "isused",
+  "version": "0.5.0",
+  "description": "Checks if JSON prop is referenced in a folder",
+  "bin": {
+    "isused": "bin/isused"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "ava --verbose"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "bin"
+  ],
+  "dependencies": {
+    "commander": "^2.9.0",
+    "deep-keys": "^0.4.0",
+    "file": "^0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Dino Trojak <dino@twobucks.co>",
+  "license": "MIT"
+}
