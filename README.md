@@ -8,6 +8,19 @@ isused checks if a JSON property is being referenced inside a folder
 ```isused test.json test```
 
 ### Output
-It outputs all properties that are not being referenced inside a folder
+It outputs all propertiesth that are not being referenced inside a folder
 
 ```[ 'not', 'test.text', 'test.nope' ]```
+
+
+## License
+
+MIT
+
+## Sponsors
+
+Two Bucks Ltd © 2016
+
+<a href="https://twobucks.co">
+  ![https://twobucks.co](https://twobucks.co/assets/images/logo-small.png)
+</a>
