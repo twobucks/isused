@@ -1,4 +1,5 @@
 # isused
+[![Build Status](https://travis-ci.org/twobucks/isused.svg?branch=master)](https://travis-ci.org/twobucks/isused)
 
 isused checks if a JSON property is being referenced inside a folder
 
