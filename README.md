@@ -1,6 +1,9 @@
 # isused
 [![Build Status](https://travis-ci.org/twobucks/isused.svg?branch=master)](https://travis-ci.org/twobucks/isused)
+[![Downloads][downloads-image]][npm-url]
 
+[npm-url]: https://www.npmjs.com/package/isused
+[downloads-image]: http://img.shields.io/npm/dt/isused.svg
 isused checks if a JSON property is being referenced inside a folder
 
 ### Usage
