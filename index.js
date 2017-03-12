@@ -1,3 +1,4 @@
+'strict mode'
 const rfs = require('fs')
 const Promise = require('bluebird')
 const deepKeys = require('deep-keys')
