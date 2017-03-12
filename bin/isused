@@ -19,5 +19,8 @@ function run() {
   const folder = program.args[1]
 
   main.search(json, folder)
+    .then(res => {
+      console.log(res)
+    })
 }
 run()

@@ -6,9 +6,6 @@
     "isused": "bin/isused"
   },
   "main": "index.js",
-  "directories": {
-    "test": "ava --verbose"
-  },
   "files": [
     "index.js",
     "lib",
@@ -21,6 +18,7 @@
     "node-dir": "^0.1.16"
   },
   "devDependencies": {
+    "ava": "^0.18.2",
     "xo": "^0.17.1"
   },
   "xo": {
@@ -29,7 +27,7 @@
     "space": true
   },
   "scripts": {
-    "test": "npm test"
+    "test": "ava --verbose"
   },
   "author": "Dino Trojak <dino@twobucks.co>",
   "license": "MIT"

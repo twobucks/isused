@@ -14,7 +14,6 @@ function search(json, folder) {
     })
     .then(() => traverseFolders(folder))
     .then(files => filterFiles(files, props))
-    .then(notUsed => console.log(notUsed))
     .catch(err => {
       console.log('error', err)
     })
