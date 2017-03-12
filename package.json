@@ -15,11 +15,19 @@
     "bin"
   ],
   "dependencies": {
+    "bluebird": "^3.5.0",
     "commander": "^2.9.0",
     "deep-keys": "^0.4.0",
-    "file": "^0.2.2"
+    "node-dir": "^0.1.16"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "semicolon": false,
+    "esnext": true,
+    "space": true
+  },
   "scripts": {
     "test": "npm test"
   },

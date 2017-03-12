@@ -1,50 +1,58 @@
-var fs = require('fs');
-var deepKeys = require('deep-keys');
-var file = require('file');
+const rfs = require('fs')
+const Promise = require('bluebird')
+const deepKeys = require('deep-keys')
+const dir = require('node-dir')
 
-var keys = [];
+const fs = Promise.promisifyAll(rfs)
 
 function search(json, folder) {
-  readJson(json)
-    .then(() => traverseFolders(folder));
+  let props = []
+  return fs.readFileAsync(json, 'utf8')
+    .then(jsonData => {
+      const json = JSON.parse(jsonData)
+      props = deepKeys(json)
+    })
+    .then(() => traverseFolders(folder))
+    .then(files => filterFiles(files, props))
+    .then(notUsed => console.log(notUsed))
+    .catch(err => {
+      console.log('error', err)
+    })
 }
 
-
-function readJson(jsonPath) {
+function traverseFolders(folder) {
   return new Promise((resolve, reject) => {
-    fs.readFile(jsonPath, 'utf8', function (err,data) {
+    dir.files(folder, (err, files) => {
       if (err) {
-        reject(err);
+        reject(err)
       }
-      var json = JSON.parse(data);
-      keys = deepKeys(json);
-      resolve();
+      return Promise.map(files, f => {
+        return fs.readFileAsync(f, 'utf8')
+      })
+      .then(resolve)
+      .catch(reject)
     })
   })
 }
 
-function traverseFolders(folder){
-  file.walk(folder, function (err, dirPaths, dirs, files) {
-    files.forEach(f => {
-      fs.readFile(f, 'utf8', function (err,str) {
-        if (err) {
-          return console.log(err);
-        }
-        const filtered = keys.filter(k => {
-          if(str.indexOf(k) > -1){
-            return false;
-          }
-          return true;
-        });
-        console.log(keys);
-        keys = filtered;
-      });
-    });
-  });
+function filterFiles(files, k) {
+  let keys = k
+  files.forEach(f => {
+    keys = filterKeys(f, keys)
+  })
+  return keys
+}
+
+function filterKeys(file, keys) {
+  return keys.filter(k => {
+    if (file.indexOf(k) > -1) {
+      return false
+    }
+    return true
+  })
 }
 
 module.exports = {
   search,
-  readJson,
   traverseFolders
 }
